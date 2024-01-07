@@ -13,14 +13,14 @@ def extract_resources(html, base_url):
     # Extract and replace the links in <style> tags
     for style in soup.find_all('link', {'rel': 'stylesheet'}):
         href = style.get('href')
-        if href and not href.startswith(('http:', 'https:')):  # Ensure href is not None before calling startswith
+        if href and not href.startswith(('http:', 'https:')):
             href = base_url + href
         style['href'] = href
 
     # Extract and replace the links in <script> tags
     for script in soup.find_all('script', {'src': True}):
         src = script['src']
-        if src and not src.startswith(('http:', 'https:')):  # Ensure src is not None before calling startswith
+        if src and not src.startswith(('http:', 'https:')):
             src = base_url + src
         script['src'] = src
 
